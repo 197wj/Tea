@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.zhiyou100.dao.TeaDao">
+  
+  	<insert id="addTea" useGeneratedKeys="true" keyProperty="id" parameterType="tea">
+  		insert into 
+  			tea(name, shape, color, clarity, tang, aroma, taste, leaf, grade_id)
+  			value(#{name}, #{shape}, #{color}, #{clarity}, #{tang}, #{aroma}, #{taste}, #{leaf}, #{gradeId})
+  	</insert>
+  	
+  	<select id="getGradeName" resultType="String">
+  		select 
+  			g.grade_name 
+  		from 
+  			grade as g, tea as t 
+  		where 
+  			t.grade_id = g.id and t.id=#{id}
+  	</select>
+  
+  	<select id="getTea" resultType="tea">
+  		select 
+  			id, name, shape, color, clarity, tang, aroma, taste, leaf 
+  		from 
+  			tea 
+  		where 
+  			id=#{id} and status=0
+  	</select>
+  	
+  	<select id="listTea" parameterType="com.zhiyou100.vo.TeaSortVo" resultType="tea">
+  		select 
+  			t.id as id, t.name as name, t.grade_id as grade_id, g.grade_name as grade_name, t.gmt_creat as gmt_creat
+  		from 
+  			tea as t, grade as g
+  		where 
+  			g.id=t.grade_id
+  		order by
+  		<if test="sortType == 0">
+			grade_id
+		</if>
+		<if test="sortType == 1">
+			grade_id DESC
+		</if>
+		<if test="sortType == 2">
+			gmt_creat
+		</if>
+		<if test="sortType == 3">
+			gmt_creat DESC
+		</if>
+  		
+		LIMIT #{startIndex}, #{pageSize}
+  	</select>
+  	
+  	<select id="getTeaCount" resultType="int">
+  		select 
+  			count(*) 
+  		from 
+  			tea
+  		where 
+  			status=0;
+  	</select>
+  	
+  	<select id="getGradeNumber" resultType="int">
+  		select count(*) from tea where grade_id=#{gradeId}
+  	</select>
+  
+  </mapper>
