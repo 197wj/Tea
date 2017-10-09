@@ -155,7 +155,7 @@
         		
         		$.ajax({
     				type : 'POST',
-    				url : 'http://localhost:8082/tea/addTea',
+    				url : 'http://localhost:8080/Tea/addTea',
     				async : true,
     				// 说明提交给服务器的数据是 json 格式
     				contentType : 'application/json',

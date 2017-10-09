@@ -118,7 +118,7 @@
         	$.ajax({
 				type : 'GET',
 				
-				url : 'http://47.95.194.150:8082/tea/listVote',
+				url : 'http://localhost:8080/Tea/listVote',
 				
 				async : true,
 				
@@ -145,7 +145,7 @@
        		
        			$.ajax({
 					type : 'GET',
-					url : 'http://47.95.194.150:8082/tea/vote/' + id,
+					url : 'http://localhost:8080/Tea/vote/' + id,
 					async : true,
 					success : function(data) {
 						
@@ -171,7 +171,7 @@
 
         	$.ajax({
 				type : 'GET',
-				url : 'http://47.95.194.150:8082/tea/listTopVote',
+				url : 'http://localhost:8080/Tea/listTopVote',
 				async : true,
 				success : function(data) {
 					
@@ -265,7 +265,7 @@
 				
 				$.ajax({
 					type : 'POST',
-					url : 'http://47.95.194.150:8082/tea/login',
+					url : 'http://localhost:8080/Tea/login',
 					async : true,
 					success : function(data) {
 						

@@ -143,7 +143,7 @@
 
         	$.ajax({
 				type : 'POST',
-				url : 'http://localhost:8082/tea/listTea',
+				url : 'http://localhost:8080/Tea/listTea',
 				async : true,
 				// 说明提交给服务器的数据是 json 格式
 				contentType : 'application/json;charset=utf-8',
@@ -202,7 +202,7 @@
         	
         	$.ajax({
 				type : 'GET',
-				url : 'http://localhost:8082/tea/statistics',
+				url : 'http://localhost:8080/Tea/statistics',
 				async : true,
 				success : function(data) {
 					
@@ -270,7 +270,7 @@
 
         	$.ajax({
 				type : 'GET',
-				url : 'http://localhost:8082/tea/getTea/' + id,
+				url : 'http://localhost:8080/Tea/getTea/' + id,
 				async : true,
 				success : function(data) {
 					// 展示弹出框

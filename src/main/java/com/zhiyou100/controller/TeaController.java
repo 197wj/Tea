@@ -1,6 +1,5 @@
 package com.zhiyou100.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +33,8 @@ public class TeaController {
 	@RequestMapping(path="/listTea", method=RequestMethod.POST)
 	public ResponseVo<PageInfo<Tea>> listTea(@RequestBody TeaSortVo teaSortVo){
 		
+		System.out.println("listTea----------------------------");
+		
 		int pageSize = teaSortVo.getPageSize();
 		
 		List<Tea> list = service.listTea(teaSortVo);
@@ -55,6 +56,8 @@ public class TeaController {
 	
 	@RequestMapping(path="/statistics", method=RequestMethod.GET)
 	public ResponseVo<Integer[]> getGradeCount(){
+		
+		System.out.println("statistics-------------------");
 		
 		Integer[] gradeNumber = service.getGradeNumber();
 		
